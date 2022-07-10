@@ -15,7 +15,7 @@ app.use(bodyParse.json());
 app.use("/api/v1", routes);
 
 app.get("/", (req: Request, res: Response) => {
-    res.send("Hello World Express and TypeScript!!!");
+    res.send("Hello World Express and TypeScript está funcionando!");
 });
 
 app.use(errors());
