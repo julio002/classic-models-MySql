@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from "express";
+import { Request, Response, NextFunction } from "express"
 import * as service from "../../services/PaymentsService"
 
 export const getAll = async (req: Request, res: Response) => {

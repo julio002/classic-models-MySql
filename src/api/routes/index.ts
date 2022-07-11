@@ -7,7 +7,7 @@ import productlines from "./routesTables/ProductlinesRoute"
 import orders from "./routesTables/OrdersRoute"
 import payments from "./routesTables/PaymentsRoute"
 
-const routes = Router();
+const routes = Router()
 routes.use("/employees", employees)
 routes.use("/customers", customers)
 routes.use("/products", products)

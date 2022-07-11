@@ -1,5 +1,5 @@
 import { DataTypes, Model, Optional } from "sequelize"
-import { sequelize } from "../../database/sequelize"
+import { sequelize } from "../sequelize"
 
 interface CustomersAttributes{
     customerNumber: number,

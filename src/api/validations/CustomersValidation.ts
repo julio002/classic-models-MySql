@@ -1,4 +1,4 @@
-import { celebrate, Joi, Segments } from "celebrate";
+import { celebrate, Joi, Segments } from "celebrate"
 
 export const CustomersCreateValidation = celebrate({
     [Segments.BODY]: Joi.object().keys({
@@ -15,7 +15,7 @@ export const CustomersCreateValidation = celebrate({
         country: Joi.string().required(),
         creditLimit: Joi.string().required(),
     }),
-});
+})
 
 export const CustomersUpdateValidation = celebrate({
     [Segments.BODY]: Joi.object().keys({
@@ -32,4 +32,4 @@ export const CustomersUpdateValidation = celebrate({
         country: Joi.string(),
         creditLimit: Joi.string(),
     }).min(1),
-});
+})

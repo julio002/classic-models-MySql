@@ -1,8 +1,8 @@
-import { OrdersInput, OrdersOutput } from "../database/models/OrdersModel";
+import { OrdersInput, OrdersOutput } from "../database/models/OrdersModel"
 import * as repository from "../database/repositories/OrdersRepository"
 
 export const getAll = async (): Promise<OrdersOutput[]> => {
-    return await repository.getAll();
+    return await repository.getAll()
 }
 
 export const getById = async (id: number): Promise<OrdersOutput> => {
@@ -19,4 +19,4 @@ export const updateById = async (id: number, payload: OrdersInput): Promise<Orde
 
 export const deleteById = async (id: number): Promise<void> => {
     await repository.deleteById(id)
-};
+}

@@ -1,39 +1,39 @@
-import AppError from "../../utils/AppError";
-import Model, { ProductlinesInput, ProductlinesOutput } from "../models/ProductlinesModel";
+import AppError from "../../utils/AppError"
+import Model, { ProductlinesInput, ProductlinesOutput } from "../models/ProductlinesModel"
 
 export const getAll = async (): Promise<ProductlinesOutput[]> => {
-    return await Model.findAll();
-};
+    return await Model.findAll()
+}
 
 export const getById = async (id: number): Promise<ProductlinesOutput> => {
-    const productlines = await Model.findByPk(id);
+    const productlines = await Model.findByPk(id)
 
     if (!productlines) {
-        throw new AppError("NotFoundError", "Registro não encontrado", 404);
+        throw new AppError("NotFoundError", "Registro não encontrado", 404)
     }
-    return productlines;
-};
+    return productlines
+}
 
 export const create = async (payload: ProductlinesInput): Promise<ProductlinesOutput> => {
-    return await Model.create(payload);
-};
+    return await Model.create(payload)
+}
 
 export const updateById = async (id: number, payload: ProductlinesInput): Promise<ProductlinesOutput> => {
-    const productlines = await Model.findByPk(id);
+    const productlines = await Model.findByPk(id)
 
     if (!productlines) {
-        throw new AppError("NotFoundError", "Registro não encontrado", 404);
+        throw new AppError("NotFoundError", "Registro não encontrado", 404)
     }
 
-    return await productlines.update(payload);
-};
+    return await productlines.update(payload)
+}
 
 export const deleteById = async (id: number): Promise<void> => {
-    const productlines = await Model.findByPk(id);
+    const productlines = await Model.findByPk(id)
 
     if (!productlines) {
-        throw new AppError("NotFoundError", "Registro não encontrado", 404);
+        throw new AppError("NotFoundError", "Registro não encontrado", 404)
     }
 
-    return await productlines.destroy();
-};
+    return await productlines.destroy()
+}

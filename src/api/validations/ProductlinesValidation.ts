@@ -1,4 +1,4 @@
-import { celebrate, Joi, Segments } from "celebrate";
+import { celebrate, Joi, Segments } from "celebrate"
 
 export const ProductlinesCreateValidation = celebrate({
     [Segments.BODY]: Joi.object().keys({
@@ -6,7 +6,7 @@ export const ProductlinesCreateValidation = celebrate({
         textDescription: Joi.string().required(),
         htmlDescription: Joi.string().required(),
     }),
-});
+})
 
 export const ProductlinesUpdateValidation = celebrate({
     [Segments.BODY]: Joi.object().keys({
@@ -14,4 +14,4 @@ export const ProductlinesUpdateValidation = celebrate({
         textDescription: Joi.string(),
         htmlDescription: Joi.string(),
     }).min(1),
-});
+})

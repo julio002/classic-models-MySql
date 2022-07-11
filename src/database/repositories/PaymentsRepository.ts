@@ -1,39 +1,39 @@
-import AppError from "../../utils/AppError";
-import Model, { PaymentsInput, PaymentsOutput } from "../models/PaymentsModel";
+import AppError from "../../utils/AppError"
+import Model, { PaymentsInput, PaymentsOutput } from "../models/PaymentsModel"
 
 export const getAll = async (): Promise<PaymentsOutput[]> => {
-    return await Model.findAll();
-};
+    return await Model.findAll()
+}
 
 export const getById = async (id: string): Promise<PaymentsOutput> => {
-    const payments = await Model.findByPk(id);
+    const payments = await Model.findByPk(id)
 
     if (!payments) {
-        throw new AppError("NotFoundError", "Registro não encontrado", 404);
+        throw new AppError("NotFoundError", "Registro não encontrado", 404)
     }
-    return payments;
-};
+    return payments
+}
 
 export const create = async (payload: PaymentsInput): Promise<PaymentsOutput> => {
-    return await Model.create(payload);
-};
+    return await Model.create(payload)
+}
 
 export const updateById = async (id: string, payload: PaymentsInput): Promise<PaymentsOutput> => {
-    const payments = await Model.findByPk(id);
+    const payments = await Model.findByPk(id)
 
     if (!payments) {
-        throw new AppError("NotFoundError", "Registro não encontrado", 404);
+        throw new AppError("NotFoundError", "Registro não encontrado", 404)
     }
 
-    return await payments.update(payload);
-};
+    return await payments.update(payload)
+}
 
 export const deleteById = async (id: string): Promise<void> => {
-    const payments = await Model.findByPk(id);
+    const payments = await Model.findByPk(id)
 
     if (!payments) {
-        throw new AppError("NotFoundError", "Registro não encontrado", 404);
+        throw new AppError("NotFoundError", "Registro não encontrado", 404)
     }
 
-    return await payments.destroy();
-};
+    return await payments.destroy()
+}

@@ -1,8 +1,8 @@
-import { PaymentsInput, PaymentsOutput } from "../database/models/PaymentsModel";
+import { PaymentsInput, PaymentsOutput } from "../database/models/PaymentsModel"
 import * as repository from "../database/repositories/PaymentsRepository"
 
 export const getAll = async (): Promise<PaymentsOutput[]> => {
-    return await repository.getAll();
+    return await repository.getAll()
 }
 
 export const getById = async (id: string): Promise<PaymentsOutput> => {
@@ -19,4 +19,4 @@ export const updateById = async (id: string, payload: PaymentsInput): Promise<Pa
 
 export const deleteById = async (id: string): Promise<void> => {
     await repository.deleteById(id)
-};
+}

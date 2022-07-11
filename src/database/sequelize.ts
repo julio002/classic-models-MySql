@@ -1,4 +1,4 @@
-import { Error, Sequelize } from "sequelize";
+import { Error, Sequelize } from "sequelize"
 
 export const sequelize = new Sequelize("classicmodels", "root", "123456", {
     host: "localhost",
@@ -8,15 +8,15 @@ export const sequelize = new Sequelize("classicmodels", "root", "123456", {
         timestamps: false,
     },
     logging: false,
-});
+})
 
 export default () => {
     sequelize
         .authenticate()
         .then(() => {
-            console.log("Conexão realizada com sucesso!");
+            console.log("Conexão realizada com sucesso!")
         })
         .catch((error: Error) => {
-            console.log(`Conexão não realizada: ${error}`);
-        });
-};
+            console.log(`Conexão não realizada: ${error}`)
+        })
+}
