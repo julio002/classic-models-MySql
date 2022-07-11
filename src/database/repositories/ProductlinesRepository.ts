@@ -6,12 +6,12 @@ export const getAll = async (): Promise<ProductlinesOutput[]> => {
 };
 
 export const getById = async (id: number): Promise<ProductlinesOutput> => {
-    const customer = await Model.findByPk(id);
+    const productlines = await Model.findByPk(id);
 
-    if (!customer) {
+    if (!productlines) {
         throw new AppError("NotFoundError", "Registro não encontrado", 404);
     }
-    return customer;
+    return productlines;
 };
 
 export const create = async (payload: ProductlinesInput): Promise<ProductlinesOutput> => {
@@ -19,21 +19,21 @@ export const create = async (payload: ProductlinesInput): Promise<ProductlinesOu
 };
 
 export const updateById = async (id: number, payload: ProductlinesInput): Promise<ProductlinesOutput> => {
-    const customer = await Model.findByPk(id);
+    const productlines = await Model.findByPk(id);
 
-    if (!customer) {
+    if (!productlines) {
         throw new AppError("NotFoundError", "Registro não encontrado", 404);
     }
 
-    return await customer.update(payload);
+    return await productlines.update(payload);
 };
 
 export const deleteById = async (id: number): Promise<void> => {
-    const customer = await Model.findByPk(id);
+    const productlines = await Model.findByPk(id);
 
-    if (!customer) {
+    if (!productlines) {
         throw new AppError("NotFoundError", "Registro não encontrado", 404);
     }
 
-    return await customer.destroy();
+    return await productlines.destroy();
 };

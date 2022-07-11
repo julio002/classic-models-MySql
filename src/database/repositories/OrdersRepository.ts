@@ -6,12 +6,12 @@ export const getAll = async (): Promise<OrdersOutput[]> => {
 };
 
 export const getById = async (id: number): Promise<OrdersOutput> => {
-    const customer = await Model.findByPk(id);
+    const orders = await Model.findByPk(id);
 
-    if (!customer) {
+    if (!orders) {
         throw new AppError("NotFoundError", "Registro não encontrado", 404);
     }
-    return customer;
+    return orders;
 };
 
 export const create = async (payload: OrdersInput): Promise<OrdersOutput> => {
@@ -19,21 +19,21 @@ export const create = async (payload: OrdersInput): Promise<OrdersOutput> => {
 };
 
 export const updateById = async (id: number, payload: OrdersInput): Promise<OrdersOutput> => {
-    const customer = await Model.findByPk(id);
+    const orders = await Model.findByPk(id);
 
-    if (!customer) {
+    if (!orders) {
         throw new AppError("NotFoundError", "Registro não encontrado", 404);
     }
 
-    return await customer.update(payload);
+    return await orders.update(payload);
 };
 
 export const deleteById = async (id: number): Promise<void> => {
-    const customer = await Model.findByPk(id);
+    const orders = await Model.findByPk(id);
 
-    if (!customer) {
+    if (!orders) {
         throw new AppError("NotFoundError", "Registro não encontrado", 404);
     }
 
-    return await customer.destroy();
+    return await orders.destroy();
 };
