@@ -21,8 +21,8 @@ class Payments extends Model<PaymentsAttributes, PaymentsInput> {
 Payments.init({
     customerNumber: { type: DataTypes.INTEGER },
     checkNumber: { type: DataTypes.STRING, primaryKey: true, autoIncrement: true },
-    paymentDate: { type: DataTypes.STRING },
-    amount: { type: DataTypes.STRING },
+    paymentDate: { type: DataTypes.DATE, allowNull: false },
+    amount: { type: DataTypes.DECIMAL(10,2), allowNull: false },
 }, {
     sequelize,
     modelName:"payments"

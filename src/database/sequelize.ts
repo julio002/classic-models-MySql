@@ -14,7 +14,7 @@ export default () => {
     sequelize
         .authenticate()
         .then(() => {
-            console.log("Conexão realizada com sucesso!")
+            console.log("Conexão com o mysql realizada sucesso!")
         })
         .catch((error: Error) => {
             console.log(`Conexão não realizada: ${error}`)

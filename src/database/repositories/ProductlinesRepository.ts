@@ -5,7 +5,7 @@ export const getAll = async (): Promise<ProductlinesOutput[]> => {
     return await Model.findAll()
 }
 
-export const getById = async (id: number): Promise<ProductlinesOutput> => {
+export const getById = async (id: string): Promise<ProductlinesOutput> => {
     const productlines = await Model.findByPk(id)
 
     if (!productlines) {
@@ -18,7 +18,7 @@ export const create = async (payload: ProductlinesInput): Promise<ProductlinesOu
     return await Model.create(payload)
 }
 
-export const updateById = async (id: number, payload: ProductlinesInput): Promise<ProductlinesOutput> => {
+export const updateById = async (id: string, payload: ProductlinesInput): Promise<ProductlinesOutput> => {
     const productlines = await Model.findByPk(id)
 
     if (!productlines) {
@@ -28,7 +28,7 @@ export const updateById = async (id: number, payload: ProductlinesInput): Promis
     return await productlines.update(payload)
 }
 
-export const deleteById = async (id: number): Promise<void> => {
+export const deleteById = async (id: string): Promise<void> => {
     const productlines = await Model.findByPk(id)
 
     if (!productlines) {

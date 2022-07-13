@@ -1,5 +1,6 @@
 import { OfficesInput, OfficesOutput } from "../database/models/OfficesModel"
 import * as repository from "../database/repositories/OfficesRepository"
+
 export const getAll = async (): Promise<OfficesOutput[]> => {
     return await repository.getAll()
 }

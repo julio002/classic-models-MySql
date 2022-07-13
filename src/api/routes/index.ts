@@ -6,6 +6,7 @@ import offices from "./routesTables/OfficesRoute"
 import productlines from "./routesTables/ProductlinesRoute"
 import orders from "./routesTables/OrdersRoute"
 import payments from "./routesTables/PaymentsRoute"
+import OrdersDetails from "./routesTables/OrdersDetailsRoute"
 
 const routes = Router()
 routes.use("/employees", employees)
@@ -15,5 +16,6 @@ routes.use("/offices", offices)
 routes.use("/productlines", productlines)
 routes.use("/orders", orders)
 routes.use("/payments", payments)
+routes.use("/OrdersDetails", OrdersDetails)
 
 export default routes

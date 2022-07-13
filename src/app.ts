@@ -6,6 +6,7 @@ import { errors } from "celebrate";
 import connection from "./database/sequelize";
 import routes from "./api/routes/index";
 import AppError from "./utils/AppError";
+import { initdb } from "./database/initdb";
 
 const app: Express = express();
 const port: number = 3000;
@@ -39,3 +40,4 @@ app.listen(port, () => {
 });
 
 connection();
+initdb()
