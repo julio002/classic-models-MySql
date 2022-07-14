@@ -40,7 +40,8 @@ Products.init({
     MSRP: { type: DataTypes.DECIMAL(10,2) },
 }, {
     sequelize,
-    modelName:"products"
+    modelName:"products",
+    paranoid: true
 })
 
 export default Products

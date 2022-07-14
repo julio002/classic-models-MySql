@@ -46,6 +46,7 @@ Employees.init(
     {
         sequelize,
         modelName: "employees",
+        paranoid: true
     }
 )
 

@@ -61,7 +61,6 @@ Customers.init(
     {
         sequelize,
         modelName: "customers",
-        paranoid: true
     }
 )
 
