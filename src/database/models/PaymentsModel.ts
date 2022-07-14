@@ -1,5 +1,6 @@
 import { DataTypes, Model, Optional } from "sequelize"
 import { sequelize } from "../../database/sequelize"
+import Customers from "./CustomersModel"
 
 interface PaymentsAttributes{
     customerNumber: number,
@@ -20,12 +21,17 @@ class Payments extends Model<PaymentsAttributes, PaymentsInput> {
 
 Payments.init({
     customerNumber: { type: DataTypes.INTEGER },
-    checkNumber: { type: DataTypes.STRING, primaryKey: true, autoIncrement: true },
+    checkNumber: { type: DataTypes.STRING },
     paymentDate: { type: DataTypes.DATE, allowNull: false },
     amount: { type: DataTypes.DECIMAL(10,2), allowNull: false },
 }, {
     sequelize,
     modelName:"payments"
 })
+
+Payments.removeAttribute("id")
+
+Customers.hasOne(Payments, { foreignKey: "customerNumber" })
+Payments.belongsTo(Customers, { foreignKey: "customerNumber" })
 
 export default Payments

@@ -1,5 +1,6 @@
 import { DataTypes, Model, Optional } from "sequelize"
 import { sequelize } from "../sequelize"
+import Employees from "./EmployeesModel"
 
 interface CustomersAttributes {
     customerNumber: number
@@ -13,7 +14,7 @@ interface CustomersAttributes {
     state: string
     postalCode: string
     country: string
-    salesRepEmployeeNumber: number
+    salesRepEmployeeNumber?: number
     creditLimit: string
 }
 
@@ -60,7 +61,11 @@ Customers.init(
     {
         sequelize,
         modelName: "customers",
+        paranoid: true
     }
 )
+
+Employees.hasMany(Customers, { foreignKey: "salesRepEmployeeNumber", onDelete: "SET NULL" })
+Customers.belongsTo(Employees, { foreignKey: "salesRepEmployeeNumber" })
 
 export default Customers

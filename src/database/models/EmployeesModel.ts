@@ -49,7 +49,4 @@ Employees.init(
     }
 )
 
-Customers.hasMany(Employees, {foreignKey: "salesRepEmployeeNumber"})
-Employees.belongsTo(Customers, {foreignKey: "employeeNumber"})
-
 export default Employees

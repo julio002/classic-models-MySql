@@ -26,16 +26,8 @@ class OrdersDetails extends Model<OrdersDetailsAttributes, OrdersDetailsInput> {
 
 OrdersDetails.init(
     {
-        orderNumber: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: { model: Orders, key: "orderNumber" },
-        },
-        productCode: {
-            type: DataTypes.STRING(20),
-            allowNull: false,
-            references: { model: Products, key: "productCode" },
-        },
+        orderNumber: { type: DataTypes.INTEGER },
+        productCode: { type: DataTypes.STRING(20) },
         quantityOrdered: { type: DataTypes.INTEGER, allowNull: false },
         priceEach: { type: DataTypes.DECIMAL(10,2), allowNull:false },
         orderLineNumber: { type: DataTypes.SMALLINT, allowNull:false },
@@ -44,6 +36,8 @@ OrdersDetails.init(
         modelName: "orderdetails",
     }
 )
+
+OrdersDetails.removeAttribute("id")
 
 Orders.belongsToMany(Products, { foreignKey: "orderNumber", through: OrdersDetails })
 Products.belongsToMany(Orders, { foreignKey: "productCode", through: OrdersDetails })

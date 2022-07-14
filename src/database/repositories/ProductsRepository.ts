@@ -1,4 +1,5 @@
 import AppError from "../../utils/AppError"
+import Orders from "../models/OrdersModel"
 import Model, { ProductsInput, ProductsOutput } from "../models/ProductsModel"
 
 export const getAll = async (): Promise<ProductsOutput[]> => {
@@ -6,7 +7,12 @@ export const getAll = async (): Promise<ProductsOutput[]> => {
 }
 
 export const getById = async (id: string): Promise<ProductsOutput> => {
-    const product = await Model.findByPk(id)
+    const product = await Model.findOne({
+        where: {
+            productCode: id
+        },
+        include: Orders
+    })
 
     if (!product) {
         throw new AppError("NotFoundError", "Registro não encontrado", 404)
