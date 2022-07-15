@@ -1,6 +1,5 @@
 import { DataTypes, Model, Optional } from "sequelize"
 import { sequelize } from "../../database/sequelize"
-import Employees from "./EmployeesModel"
 
 interface OfficesAttributes{
     officeCode: number,
@@ -44,8 +43,5 @@ Offices.init({
     modelName:"offices",
     paranoid: true
 })
-
-Employees.hasMany(Offices, {foreignKey: "officeCode"})
-Offices.belongsTo(Employees, {foreignKey: "officeCode"})
 
 export default Offices

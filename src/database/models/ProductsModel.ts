@@ -1,5 +1,6 @@
 import { DataTypes, Model, Optional } from "sequelize"
 import { sequelize } from "../../database/sequelize"
+import Productlines from "./ProductlinesModel"
 
 interface ProductsAttributes{
     productCode: string,
@@ -43,5 +44,8 @@ Products.init({
     modelName:"products",
     paranoid: true
 })
+
+Products.hasMany(Productlines, {foreignKey: "productLine"})
+Productlines.belongsTo(Products, {foreignKey: "productLine"})
 
 export default Products

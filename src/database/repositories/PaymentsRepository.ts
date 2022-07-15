@@ -1,12 +1,20 @@
 import AppError from "../../utils/AppError"
+import Customers from "../models/CustomersModel"
 import Model, { PaymentsInput, PaymentsOutput } from "../models/PaymentsModel"
 
 export const getAll = async (): Promise<PaymentsOutput[]> => {
-    return await Model.findAll()
+    return await Model.findAll({
+        include: Customers
+    })
 }
 
-export const getById = async (id: string): Promise<PaymentsOutput> => {
-    const payments = await Model.findByPk(id)
+export const getById = async (checkNumber: string): Promise<PaymentsOutput> => {
+    const payments = await Model.findOne({
+        where: {
+            checkNumber: checkNumber,
+        },
+        include: Customers
+    })
 
     if (!payments) {
         throw new AppError("NotFoundError", "Registro não encontrado", 404)

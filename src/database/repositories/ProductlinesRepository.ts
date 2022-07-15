@@ -1,12 +1,20 @@
 import AppError from "../../utils/AppError"
 import Model, { ProductlinesInput, ProductlinesOutput } from "../models/ProductlinesModel"
+import Products from "../models/ProductsModel"
 
 export const getAll = async (): Promise<ProductlinesOutput[]> => {
-    return await Model.findAll()
+    return await Model.findAll({
+        include: Products
+    })
 }
 
-export const getById = async (id: string): Promise<ProductlinesOutput> => {
-    const productlines = await Model.findByPk(id)
+export const getById = async (productLine: string): Promise<ProductlinesOutput> => {
+    const productlines = await Model.findOne({
+        where: {
+            productLine: productLine,
+        },
+        include: Products
+    })
 
     if (!productlines) {
         throw new AppError("NotFoundError", "Registro não encontrado", 404)

@@ -1,20 +1,18 @@
 import AppError from "../../utils/AppError"
-import OrdersDetails from "../models/OrdersDetailsModel"
 import Model, { OrdersInput, OrdersOutput } from "../models/OrdersModel"
-import Products from "../models/ProductsModel"
 
 export const getAll = async (): Promise<OrdersOutput[]> => {
     return await Model.findAll({
-        include: Products
+        include: { all: true }
     })
 }
 
-export const getById = async (id: number): Promise<OrdersOutput> => {
+export const getById = async (orderNumber: number): Promise<OrdersOutput> => {
     const orders = await Model.findOne({
         where: {
-            orderNumber: id
+            orderNumber: orderNumber
         },
-        include: Products
+        include: { all: true, nested: true }
     })
 
     if (!orders) {

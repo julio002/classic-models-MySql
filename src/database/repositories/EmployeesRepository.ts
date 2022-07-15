@@ -1,19 +1,18 @@
 import AppError from "../../utils/AppError"
 import Model, { EmployeesInput, EmployeesOutput } from "../models/EmployeesModel"
-import Offices from "../models/OfficesModel"
 
 export const getAll = async (): Promise<EmployeesOutput[]> => {
     return await Model.findAll({
-        include: Offices
+        include: { all: true }
     })
 }
 
-export const getById = async (id: number): Promise<EmployeesOutput> => {
+export const getById = async (employeeNumber: number): Promise<EmployeesOutput> => {
     const employees = await Model.findOne({
         where: {
-            employeeNumber: id,
+            employeeNumber: employeeNumber,
         },
-        include: Offices
+        include: { all: true, nested: true }
     })
 
     if (!employees) {

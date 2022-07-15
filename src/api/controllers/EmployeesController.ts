@@ -6,7 +6,7 @@ export const getAll = async (req: Request, res: Response) => {
 }
 
 export const getById = async (req: Request, res: Response, next: NextFunction) => {
-    res.send(await service.getById(parseInt(req.params.id)))
+    res.send(await service.getById(parseInt(req.params.employeeNumber)))
 }
 
 export const create = async (req: Request, res: Response) => {

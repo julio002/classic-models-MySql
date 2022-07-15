@@ -2,7 +2,16 @@ import { Request, Response, NextFunction } from "express"
 import * as service from "../../services/CustomersService"
 
 export const getAll = async (req: Request, res: Response) => {
-    res.send(await service.getAll())
+    const { size, page, sort, order, customerName, creditLimitMax, creditLimitMin, creditLimit, ...filters } = req.query
+
+    const query = {
+        size: parseInt(size as string),
+        page: parseInt(page as string),
+        sort: sort as string,
+        order: order as string,
+        ...filters
+    }
+    res.send(await service.getAll(customerName as string, query, creditLimitMax as string, creditLimitMin as string, creditLimit as string))
 }
 
 export const getById = async (req: Request, res: Response, next: NextFunction) => {

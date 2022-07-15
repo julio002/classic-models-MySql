@@ -3,7 +3,9 @@ import Orders from "../models/OrdersModel"
 import Model, { ProductsInput, ProductsOutput } from "../models/ProductsModel"
 
 export const getAll = async (): Promise<ProductsOutput[]> => {
-    return await Model.findAll()
+    return await Model.findAll({
+        include: { all: true }
+    })
 }
 
 export const getById = async (id: string): Promise<ProductsOutput> => {
@@ -11,7 +13,7 @@ export const getById = async (id: string): Promise<ProductsOutput> => {
         where: {
             productCode: id
         },
-        include: Orders
+        include: { all: true, nested: true }
     })
 
     if (!product) {
