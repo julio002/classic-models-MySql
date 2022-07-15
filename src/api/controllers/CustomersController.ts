@@ -11,11 +11,11 @@ export const getAll = async (req: Request, res: Response) => {
         order: order as string,
         ...filters
     }
-    res.send(await service.getAll(customerName as string, query, creditLimitMax as string, creditLimitMin as string, creditLimit as string))
+    res.send(await service.getAll(customerName as string, creditLimitMax as string, creditLimitMin as string, creditLimit as string, query))
 }
 
 export const getById = async (req: Request, res: Response, next: NextFunction) => {
-    res.send(await service.getById(parseInt(req.params.id)))
+    res.send(await service.getById(parseInt(req.params.customerNumber)))
 }
 
 export const create = async (req: Request, res: Response) => {

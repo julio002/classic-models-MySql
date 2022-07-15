@@ -7,10 +7,17 @@ import productlines from "./routesTables/ProductlinesRoute"
 import orders from "./routesTables/OrdersRoute"
 import payments from "./routesTables/PaymentsRoute"
 import OrdersDetails from "./routesTables/OrdersDetailsRoute"
+import authRouter from "./routesTables/AuthRoute"
+import { ensureIsAuthenticated } from "../middlewares/AuthMiddleware"
 
 const routes = Router()
-routes.use("/employees", employees)
+
+routes.use("/auth", authRouter)
+
+routes.use(ensureIsAuthenticated)
+
 routes.use("/customers", customers)
+routes.use("/employees", employees)
 routes.use("/products", products)
 routes.use("/offices", offices)
 routes.use("/productlines", productlines)

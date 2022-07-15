@@ -1,17 +1,20 @@
-import Orders from "./models/OrdersModel"
-import OrdersDetails from "./models/OrdersDetailsModel"
-import Offices from "./models/OfficesModel"
-import Employees from "./models/EmployeesModel"
+import connection from "../database/sequelize"
+
+import User from "./models/UserModel"
 import Customers from "./models/CustomersModel"
-import Products from "./models/ProductsModel"
+import Employees from "./models/EmployeesModel"
+import Offices from "./models/OfficesModel"
+import OrdersDetails from "./models/OrdersDetailsModel"
+import Orders from "./models/OrdersModel"
 import Payments from "./models/PaymentsModel"
 import Productlines from "./models/ProductlinesModel"
-import connection from "../database/sequelize"
+import Products from "./models/ProductsModel"
 
 export const initdb = async () => {
     Promise.all([
         await connection(),
         console.log("Sincronizando as tabelas"),
+        await User.sync({ alter: true }),
         await Customers.sync({ alter: true }),
         await Employees.sync({ alter: true }),
         await Offices.sync({ alter: true }),
