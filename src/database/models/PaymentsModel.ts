@@ -21,7 +21,7 @@ class Payments extends Model<PaymentsAttributes, PaymentsInput> {
 
 Payments.init({
     customerNumber: { type: DataTypes.INTEGER },
-    checkNumber: { type: DataTypes.STRING },
+    checkNumber: { type: DataTypes.STRING(50) },
     paymentDate: { type: DataTypes.DATE, allowNull: false },
     amount: { type: DataTypes.DECIMAL(10,2), allowNull: false },
 }, {

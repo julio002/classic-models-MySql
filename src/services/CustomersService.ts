@@ -2,8 +2,8 @@ import { CustomersInput, CustomersOutput } from "../database/models/CustomersMod
 import * as repository from "../database/repositories/CustomersRepository"
 import { Query } from "../shared/types/query"
 
-export const getAll = async (customerName: string, creditLimitMax: string, creditLimitMin:string, creditLimit: string, query: Query): Promise<{rows:CustomersOutput[], count: number}> => {
-    return await repository.getAll(customerName, creditLimitMax, creditLimitMin, creditLimit, query)
+export const getAll = async (customerName: string, creditLimitMin: string, creditLimitMax: string, creditLimit: string, query: Query): Promise<{rows:CustomersOutput[], count: number}> => {
+    return await repository.getAll(customerName, creditLimitMin, creditLimitMax, creditLimit, query)
 }
 
 export const getById = async (customerNumber: number): Promise<CustomersOutput> => {

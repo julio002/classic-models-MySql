@@ -1,8 +1,8 @@
 import { ProductsInput, ProductsOutput } from "../database/models/ProductsModel";
 import * as repository from "../database/repositories/ProductsRepository"
 
-export const getAll = async (): Promise<ProductsOutput[]> => {
-    return await repository.getAll();
+export const getAll = async (productLimitMin: string, productLimitMax: string): Promise<ProductsOutput[]> => {
+    return await repository.getAll(productLimitMin, productLimitMax);
 }
 
 export const getById = async (id: string): Promise<ProductsOutput> => {

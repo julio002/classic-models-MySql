@@ -1,8 +1,19 @@
+import { Op } from "sequelize"
 import AppError from "../../utils/AppError"
 import Model, { OrdersInput, OrdersOutput } from "../models/OrdersModel"
 
-export const getAll = async (): Promise<OrdersOutput[]> => {
+export const getAll = async (dateLimitMin: string, dateLimitMax: string,): Promise<OrdersOutput[]> => {
+    
+    if(!dateLimitMin) dateLimitMin = "0"
+    if(!dateLimitMax) dateLimitMax = "999999999999999999"
+
+    const dateMin = parseInt(dateLimitMin)
+    const dateMax = parseInt(dateLimitMax)
+
     return await Model.findAll({
+        where: {
+            orderDate: { [Op.between]: [dateMin, dateMax]}
+        },
         include: { all: true }
     })
 }
